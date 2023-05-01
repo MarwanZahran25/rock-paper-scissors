@@ -24,8 +24,7 @@ function getComputerChoice(){
 
 function playAround (computerSelection,playerSelection){
     if (computerSelection == playerSelection){
-      playerScore++;
-      computerScore++;
+     
       console.log(`that is very intersting you both choose ${playerSelection} which makes it a draw`)
         return "DRAW"
 
@@ -72,12 +71,12 @@ function game(){
 
     let playerChoice = getPlayerChoice();
     
-    playAround(getComputerChoice(),playerChoice);
-    playAround(getComputerChoice(),playerChoice);
-    playAround(getComputerChoice(),playerChoice);
-    playAround(getComputerChoice(),playerChoice);
-    playAround(getComputerChoice(),playerChoice);
-  
+    playAround(getComputerChoice(),getPlayerChoice());
+    playAround(getComputerChoice(),getPlayerChoice());
+    playAround(getComputerChoice(),getPlayerChoice());
+    playAround(getComputerChoice(),getPlayerChoice());
+    playAround(getComputerChoice(),getPlayerChoice());
+
 
 }
 
