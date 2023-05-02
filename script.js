@@ -77,18 +77,17 @@ function game(){
     playAround(getComputerChoice(),getPlayerChoice());
     playAround(getComputerChoice(),getPlayerChoice());
 
-
+    if (playerScore==computerScore){
+        console.log(`draw`)
+    }
+    else if (playerScore>computerScore){
+        console.log(`player wins with score of  ${playerScore} aganist computers ${computerScore}`)
+    }
+    else if (playerScore<computerScore){
+        console.log(`computer wins with score of ${computerScore} aganist player's ${playerScore}`)
+    }
 }
 
 game();
 
 
-if (playerScore==computerScore){
-        console.log(`draw`)
-    }
-else if (playerScore>computerScore){
-        console.log(`player wins with score of  ${playerScore} aganist computers ${computerScore}`)
-    }
-else if (playerScore<computerScore){
-        console.log(`computer wins with score of ${computerScore} aganist player's ${playerScore}`)
-    }
