@@ -69,7 +69,7 @@ function playAround (computerSelection,playerSelection){
 }
 function game(){
 
-    let playerChoice = getPlayerChoice();
+    
     
     playAround(getComputerChoice(),getPlayerChoice());
     playAround(getComputerChoice(),getPlayerChoice());
