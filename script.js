@@ -1,93 +1,72 @@
-playerScore=0;
-computerScore=0;
-function getPlayerChoice(){
-    let playerChoice = prompt("please choose Rock,paper or scissors");
-    return playerChoice.toUpperCase();
+let playerScore = 0;
+let computerScore = 0;
+
+let rock = document.querySelector(".ROCK");
+let paper = document.querySelector(".PAPER");
+let scissors = document.querySelector(".SCISSORS");
+let board = document.querySelector('.the-running');
+let thePlayerScore = document.querySelector("#ThePlayerscore");
+let theComputerScore = document.querySelector('#theComputerScore');
+thePlayerScore.textContent = ` ${playerScore}`;
+theComputerScore.textContent = `${computerScore}`;
+
+window.addEventListener('click', () => {
+  thePlayerScore.textContent = ` ${playerScore}`;
+  theComputerScore.textContent = ` ${computerScore}`;
+
+  if (computerScore === 5 || playerScore === 5) {
+    if (computerScore === 5) {
+      board.textContent = "Computer wins this round";
+      computerScore = 0;
+      playerScore = 0;
+    } else if (playerScore === 5) {
+      board.textContent = "You win this round";
+      computerScore = 0;
+      playerScore = 0;
+    }
+  }
+});
+
+rock.addEventListener('click', () => playAround("ROCK"));
+paper.addEventListener('click', () => playAround("PAPER"));
+scissors.addEventListener('click', () => playAround("SCISSORS"));
+
+function playAround(playerSelection) {
+  let computerSelection;
+  let theRandomNumber = (Math.floor(Math.random() * 10)) % 3;
+  switch (theRandomNumber) {
+    case 0:
+      computerSelection = "ROCK";
+      break;
+    case 1:
+      computerSelection = "PAPER";
+      break;
+    case 2:
+      computerSelection = "SCISSORS";
+      break;
+  }
+
+  if (computerSelection === playerSelection) {
+    board.textContent = 'Draw';
+  } else if (computerSelection === "ROCK" && playerSelection === "SCISSORS") {
+    computerScore++;
+    board.textContent = 'Computer wins';
+  } else if (computerSelection === "ROCK" && playerSelection === "PAPER") {
+    playerScore++;
+    board.textContent = 'You win';
+  } else if (computerSelection === "PAPER" && playerSelection === "ROCK") {
+    computerScore++;
+    board.textContent = 'Computer wins';
+  } else if (computerSelection === "PAPER" && playerSelection === "SCISSORS") {
+    playerScore++;
+    board.textContent = 'You win';
+  } else if (computerSelection === "SCISSORS" && playerSelection === "ROCK") {
+    playerScore++;
+    board.textContent = 'You win';
+  } else if (computerSelection === "SCISSORS" && playerSelection === "PAPER") {
+    computerScore++;
+    board.textContent = 'Computer wins';
+  }
+
+  
 }
-function getComputerChoice(){
-   let computerChoice;
-    let theRandomNumber = (Math.floor(Math.random()*10))%3;
-   switch (theRandomNumber){
-        case 0 :
-            computerChoice = "ROCK";
-            break;
-        case 1 :
-            computerChoice = "PAPER";
-            break;
-        case 2 :
-            computerChoice = "SCISSORS";
-            break;
-   }
-   return computerChoice;
-
-}
-
-function playAround (computerSelection,playerSelection){
-    if (computerSelection == playerSelection){
-     
-      console.log(`that is very intersting you both choose ${playerSelection} which makes it a draw`)
-        return "DRAW"
-
-    }
-    else if (computerSelection == "ROCK" && playerSelection=="SCISSORS"){
-       computerScore++
-        console.log(`You lose ${computerSelection} beats ${playerSelection}`)
-       return "COMPUTER"
-        
-    }
-    else if (computerSelection == "ROCK" && playerSelection=="PAPER"){
-       playerScore++;
-       console.log(`You win ${playerSelection} beats ${computerSelection}`)
-        return "PLAYER"
-        
-        
-    }
-    else if (computerSelection == "PAPER" && playerSelection=="ROCK"){
-       computerScore++;
-       console.log(`You lose ${computerSelection} beats ${playerSelection}`)
-        return "COMPUTER"
-        
-    }
-    else if (computerSelection == "PAPER" && playerSelection=="SCISSORS"){
-       playerScore++;
-       console.log(`You win ${playerSelection} beats ${computerSelection}`)
-        return "PLAYER"
-        
-    }
-    else if (computerSelection == "SCISSORS" && playerSelection=="ROCK"){
-        playerScore++;
-        console.log(`You win ${playerSelection} beats ${computerSelection}`)
-        return "PLAYER"
-        
-    }
-    else if ((computerSelection == "SCISSORS" && playerSelection=="PAPER")){
-        computerScore++;
-        console.log(`You lose ${computerSelection} beats ${playerSelection}`)
-        return "COMPUTER"
-        
-    }
-}
-function game(){
-
-    
-    
-    playAround(getComputerChoice(),getPlayerChoice());
-    playAround(getComputerChoice(),getPlayerChoice());
-    playAround(getComputerChoice(),getPlayerChoice());
-    playAround(getComputerChoice(),getPlayerChoice());
-    playAround(getComputerChoice(),getPlayerChoice());
-
-    if (playerScore==computerScore){
-        console.log(`draw`)
-    }
-    else if (playerScore>computerScore){
-        console.log(`player wins with score of  ${playerScore} aganist computers ${computerScore}`)
-    }
-    else if (playerScore<computerScore){
-        console.log(`computer wins with score of ${computerScore} aganist player's ${playerScore}`)
-    }
-}
-
-game();
-
-
