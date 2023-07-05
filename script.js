@@ -16,11 +16,11 @@ window.addEventListener('click', () => {
 
   if (computerScore === 5 || playerScore === 5) {
     if (computerScore === 5) {
-      board.textContent = "Computer wins this round";
+      board.textContent = "Computer wins this game";
       computerScore = 0;
       playerScore = 0;
     } else if (playerScore === 5) {
-      board.textContent = "You win this round";
+      board.textContent = "You win this game";
       computerScore = 0;
       playerScore = 0;
     }
